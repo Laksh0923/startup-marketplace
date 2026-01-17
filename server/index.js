@@ -17,7 +17,7 @@ const app = express();
 app.use(helmet());
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-vercel-domain.vercel.app', 'https://startup-marketplace.vercel.app']
+    ? ['https://startup-marketplace-xyz.vercel.app'] // Replace with your actual Vercel URL
     : process.env.CLIENT_URL || 'http://localhost:3000',
   credentials: true
 }));
