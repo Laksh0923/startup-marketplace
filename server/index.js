@@ -20,7 +20,8 @@ app.use(cors({
     ? [
         'https://startup-marketplace.vercel.app',
         'https://startup-marketplace-git-main.vercel.app',
-        /^https:\/\/startup-marketplace-.*\.vercel\.app$/
+        /^https:\/\/startup-marketplace-.*\.vercel\.app$/,
+        'http://localhost:3000' // For local development
       ]
     : process.env.CLIENT_URL || 'http://localhost:3000',
   credentials: true
