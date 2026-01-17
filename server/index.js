@@ -17,7 +17,11 @@ const app = express();
 app.use(helmet());
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://startup-marketplace-xyz.vercel.app'] // Replace with your actual Vercel URL
+    ? [
+        'https://startup-marketplace.vercel.app',
+        'https://startup-marketplace-git-main.vercel.app',
+        /^https:\/\/startup-marketplace-.*\.vercel\.app$/
+      ]
     : process.env.CLIENT_URL || 'http://localhost:3000',
   credentials: true
 }));
@@ -70,11 +74,9 @@ if (process.env.MONGODB_URI) {
 }
 
 // Only start server if not in Vercel environment
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-}
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 module.exports = app;
